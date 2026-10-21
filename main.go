@@ -10,7 +10,8 @@ import (
 	"strings"
 	"time"
 
-	httphandler "github.com/ISBachvarov21/Rune-GO/runehttp"
+	"github.com/ISBachvarov21/Rune-GO-test/routes"
+	"github.com/ISBachvarov21/Rune-GO/runehttp"
 )
 
 var portChan chan string
@@ -20,25 +21,18 @@ type Serializable struct {
 	S string `json:"s"`
 }
 
-func Root(c *httphandler.Context) (httphandler.Response, error) {
-	return httphandler.Text(c.Param("test")), nil
+func Root(c *runehttp.Context) (runehttp.Response, error) {
+	return runehttp.Text("ok "), nil
 }
 
-func SerializableTest(s Serializable) (httphandler.Response, error) {
-	return httphandler.Text(s.S), nil
+func SerializableTest(s Serializable) (runehttp.Response, error) {
+	return runehttp.Text(s.S), nil
 }
 
 func server(srv *http.Server) {
-	var handler = httphandler.NewHTTPHandler()
+	var handler = runehttp.NewHTTPHandler()
 
-	err := handler.AddRoute("GET", "/:test", Root)
-
-	if err != nil {
-		panic(err)
-	}
-
-	err = handler.AddRoute("POST", "/", SerializableTest)
-
+	err := routes.RegisterRoutes(handler)
 	if err != nil {
 		panic(err)
 	}
@@ -51,6 +45,7 @@ func server(srv *http.Server) {
 }
 
 func main() {
+	// todo: wait for port and report start only if ran with specific flag (-dev)
 	shutdown := make(chan struct{})
 	portChan = make(chan string)
 	var srv http.Server

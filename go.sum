@@ -2,5 +2,7 @@ github.com/ISBachvarov21/Rune-GO v0.0.0-20261020130819-ce7bab0e155f h1:hOTqMMC7Y
 github.com/ISBachvarov21/Rune-GO v0.0.0-20261020130819-ce7bab0e155f/go.mod h1:dBmaUXk9wLKoZAoUH1We4V5QTM2Vjn807iuNbU0Y1wo=
 github.com/ISBachvarov21/Rune-GO v0.0.0-20261021073718-ff9a41448a1a h1:d9HOGa3zZMWBO8hG7XrcYpA3zXDD26EpFxBelar0Rmo=
 github.com/ISBachvarov21/Rune-GO v0.0.0-20261021073718-ff9a41448a1a/go.mod h1:dBmaUXk9wLKoZAoUH1We4V5QTM2Vjn807iuNbU0Y1wo=
+github.com/ISBachvarov21/Rune-GO v0.0.0-20261021081540-cf0ef406fa9c h1:ALB05XkrWRrMtYQAIG8ZSNjwFdfrpBgDijxF++AwnWM=
+github.com/ISBachvarov21/Rune-GO v0.0.0-20261021081540-cf0ef406fa9c/go.mod h1:dBmaUXk9wLKoZAoUH1We4V5QTM2Vjn807iuNbU0Y1wo=
 github.com/julienschmidt/httprouter v1.3.0 h1:U0609e9tgbseu3rBINet9P48AI/D3oJs4dN7jwJOQ1U=
 github.com/julienschmidt/httprouter v1.3.0/go.mod h1:JR6WtHb+2LUe8TCKY3cZOxFyyO8IZAc4RVcycCCAKdM=
