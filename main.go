@@ -9,21 +9,39 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	httphandler "github.com/ISBachvarov21/Rune-GO/runehttp"
 )
 
 var portChan chan string
 var port string
 
+type Serializable struct {
+	S string `json:"s"`
+}
+
+func Root(c *httphandler.Context) (httphandler.Response, error) {
+	return httphandler.Text(c.Param("test")), nil
+}
+
+func SerializableTest(s Serializable) (httphandler.Response, error) {
+	return httphandler.Text(s.S), nil
+}
+
 func server(srv *http.Server) {
-	var handler = &httphandler.HTTPHandler{}
+	var handler = httphandler.NewHTTPHandler()
 
-	handler.AddRoute("GET", "/", func(w http.ResponseWriter, r *http.Request) {
-		log.Println("ivan e gotin!!")
-	})
+	err := handler.AddRoute("GET", "/:test", Root)
 
-	//handler.AddRoute("POST", "/", func(w http.ResponseWriter, r *http.Request) {
-	//	fmt.Println("POST")
-	//})
+	if err != nil {
+		panic(err)
+	}
+
+	err = handler.AddRoute("POST", "/", SerializableTest)
+
+	if err != nil {
+		panic(err)
+	}
 
 	srv.Handler = handler
 	srv.Addr = ":" + port
